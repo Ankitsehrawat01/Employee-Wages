@@ -3,24 +3,31 @@ Console.WriteLine("Welcome to Employee Wage Computation Program on Master Branch
 const int isFullTime = 1;
 const int isPartTime = 2;
 const int wagePerHr = 20;
+const int totalWorkingDays = 20;
 int empHrs = 0;
 int empDailyWage = 0;
+int totalEarnings = 0;
 Random random = new Random();
 int result = random.Next(0,3);
-switch (result)
-    { 
-    case isFullTime:
-        Console.WriteLine("Employee is Full Time");
-        empHrs = 8;
-        break;
-    case isPartTime:
-        Console.WriteLine("Employee is Part time");
-        empHrs = 4;
-        break;
-    default:
-        Console.WriteLine("Employee is Absent");
-        empHrs = 0;
-        break;
+for (int i = 0; i <= totalWorkingDays; i++)
+{
+    switch (result)
+    {
+        case isFullTime:
+            Console.WriteLine("Employee is Full Time");
+            empHrs = 8;
+            break;
+        case isPartTime:
+            Console.WriteLine("Employee is Part time");
+            empHrs = 4;
+            break;
+        default:
+            Console.WriteLine("Employee is Absent");
+            empHrs = 0;
+            break;
     }
-empDailyWage = empHrs * wagePerHr;
-Console.WriteLine("empDailyWage = " + empDailyWage);
+    empDailyWage = empHrs * wagePerHr;
+    totalEarnings = empDailyWage * totalWorkingDays;
+    Console.WriteLine("empDailyWage = " + empDailyWage);
+}
+Console.WriteLine("Total Earnings = "+totalEarnings);
