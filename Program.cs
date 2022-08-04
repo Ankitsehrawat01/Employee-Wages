@@ -3,14 +3,18 @@ Console.WriteLine("Welcome to Employee Wage Computation Program on Master Branch
 const int isFullTime = 1;
 const int isPartTime = 2;
 const int wagePerHr = 20;
-const int totalWorkingDays = 20;
+const int WorkingDays = 20;
+const int maxHrsInMonth = 100;
 int empHrs = 0;
 int empDailyWage = 0;
 int totalEarnings = 0;
+int totalEmpHrs = 0;
+int totalWorkingDays = 0;
 Random random = new Random();
 int result = random.Next(0,3);
-for (int i = 0; i <= totalWorkingDays; i++)
+while (totalEmpHrs < maxHrsInMonth && totalWorkingDays <= WorkingDays)
 {
+    totalWorkingDays++;
     switch (result)
     {
         case isFullTime:
@@ -26,8 +30,10 @@ for (int i = 0; i <= totalWorkingDays; i++)
             empHrs = 0;
             break;
     }
+    totalEmpHrs += empHrs;
+    Console.WriteLine("Day#:" + totalWorkingDays + " Emp Hrs = " + empHrs);
     empDailyWage = empHrs * wagePerHr;
-    totalEarnings = empDailyWage * totalWorkingDays;
     Console.WriteLine("empDailyWage = " + empDailyWage);
+    totalEarnings += empDailyWage;
 }
 Console.WriteLine("Total Earnings = "+totalEarnings);
